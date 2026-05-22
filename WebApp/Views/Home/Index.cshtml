@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Proyector>
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+@if (Model is not null)
+{
+    <div class="container">
+        <h1 class="display-4 text-center">Proyectores</h1>
+        <div class="row mb-3">
+            <h3 class="col-10 text-start mb-3">Información de los proyectores registrados:</h3>
+            <a class="col-2 btn btn-primary" asp-controller="Home" asp-action="Create">Nuevo proyector</a>
+        </div>
+        @if (Model.Any<Proyector>())
+        {
+            <div class="row">
+                <div class="col"># proyector</div>
+                <div class="col">Marca</div>
+                <div class="col">Modelo</div>
+                <div class="col"># de serie</div>
+                <div class="col">Situacion</div>
+                <div class="col">Fecha de alta</div>
+            </div>
+            
+            <div>
+                @foreach (Proyector proyector in Model)
+                {
+                    <div class="row">
+                        <div class="col">@proyector.Id</div>
+                        <div class="col">@proyector.Marca</div>
+                        <div class="col">@proyector.Modelo</div>
+                        <div class="col">@proyector.NumeroDeSerie</div>
+                        <div class="col">@proyector.Situacion</div>
+                        <div class="col">@proyector.FechaDeAlta.ToShortDateString()</div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h4>Aún no hay proyectores registrados</h4>
+        }
+    </div>
+}
