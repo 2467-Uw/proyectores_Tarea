@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using WebApp.Data.Migrations;
-using WebApp.Models.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
