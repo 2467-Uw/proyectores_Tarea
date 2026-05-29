@@ -1,19 +1,29 @@
-﻿namespace WebApp.Models.Services
+﻿using WebApp.Data;
+using WebApp.Data.Migrations;
+using WebApp.Models;
+
+namespace WebApp.Models.Services
 {
     public class ProyectoresService : IProyectoresService
     {
-        public ProyectoresService() 
-        {
+        private readonly AppDBContext _context;
 
+        public ProyectoresService(AppDBContext context)
+        {
+            this._context = context;
         }
         public void AddProyector(Proyector proyector)
         {
-            throw new NotImplementedException();
+            if (proyector != null) // Verificar que el proyector no sea nulo
+            {
+                _context.Proyectores.Add(proyector); // Agregar el nuevo proyector al contexto
+                _context.SaveChanges(); // Guardar los cambios en la base de datos
+            }
         }
 
         public IEnumerable<Proyector> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Proyectores.ToList<Proyector>(); // Devolver todos los proyectores
         }
     }
 }
