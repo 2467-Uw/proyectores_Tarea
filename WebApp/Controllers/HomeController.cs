@@ -2,15 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp.Models;
 using WebApp.Models.Services;
+using WebApp.ViewsModels;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private IProyectoresService _service;
-        public HomeController()
+        public HomeController(IProyectoresService service)
         {
-            _service = new ProyetoresEnMemoriaService();
+            _service = service;
         }
         public IActionResult Index()
         {
@@ -19,73 +20,11 @@ namespace WebApp.Controllers
             return View(modelo);
         }
 
-        private IEnumerable<Proyector> LoadData()
-        {
-            var proyectores = new List<Proyector>();
-
-            proyectores.Add(new Proyector()
-            {
-                Id = 1,
-                Marca = "LG",
-                Modelo = "XLight",
-                NumeroDeSerie = "346765",
-                Situacion = SituacionProyector.Bueno,
-                FechaDeAlta = DateTime.Now
-            });
-            proyectores.Add(new Proyector()
-            {
-                Id = 2,
-                Marca = "Epson",
-                Modelo = "XLight",
-                NumeroDeSerie = "23534",
-                Situacion = SituacionProyector.Regular,
-                FechaDeAlta = DateTime.Now
-            });
-            proyectores.Add(new Proyector()
-            {
-                Id = 3,
-                Marca = "PanaSonic",
-                Modelo = "XLight",
-                NumeroDeSerie = "23534",
-                Situacion = SituacionProyector.Regular,
-                FechaDeAlta = DateTime.Now
-            });
-            proyectores.Add(new Proyector()
-            {
-                Id = 4,
-                Marca = "BenQ",
-                Modelo = "XLight",
-                NumeroDeSerie = "748921",
-                Situacion = SituacionProyector.Malo,
-                FechaDeAlta = DateTime.Now
-            });
-            proyectores.Add(new Proyector()
-            {
-                Id = 5,
-                Marca = "Dell",
-                Modelo = "XLight",
-                NumeroDeSerie = "368434",
-                Situacion = SituacionProyector.Bueno,
-                FechaDeAlta = DateTime.Now
-            });
-            proyectores.Add(new Proyector()
-            {
-                Id = 6,
-                Marca = "Epson",
-                Modelo = "XLight",
-                NumeroDeSerie = "673292",
-                Situacion = SituacionProyector.Malo,
-                FechaDeAlta = DateTime.Now
-            });
-
-            return proyectores;
-        }
-
         public IActionResult Create()
         {
-            Proyector proyector = new Proyector();
-            proyector.FechaDeAlta = DateTime.Now;
-            return View(proyector);
+          var modelo = new HomeCreateViewModel();
+            modelo.FechDeAlta = DateTime.Now;
+            return View(modelo);
         }
 
         [HttpPost]

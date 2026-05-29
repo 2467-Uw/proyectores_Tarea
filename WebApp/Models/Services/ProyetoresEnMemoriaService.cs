@@ -76,5 +76,20 @@
 
             return proyectores;
         }
+
+        public Proyector? GetProyectorById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Proyector proyector)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
