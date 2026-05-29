@@ -103,6 +103,18 @@ namespace WebApp.Controllers
            
         }
 
+        public IActionResult Details(int id)
+        {
+            
+            var modelo = _service.GetProyectorById(id);
+            if (modelo != null)
+            {
+                return View(modelo);
+            }
+            return RedirectToAction(nameof(Index));
+
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

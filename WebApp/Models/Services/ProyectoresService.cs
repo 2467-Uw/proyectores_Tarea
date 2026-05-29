@@ -21,9 +21,25 @@ namespace WebApp.Models.Services
             }
         }
 
+        public void Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+        
+        public Proyector? GetProyectorById(int id)
+        {
+            return _context.Proyectores.FirstOrDefault<Proyector>(); // Buscar el proyector por su ID y devolverlo
+           
+        }
+
         public IEnumerable<Proyector> GetAll()
         {
             return _context.Proyectores.ToList<Proyector>(); // Devolver todos los proyectores
+        }
+
+        public void Update(Proyector proyector)
+        {
+            throw new NotImplementedException();
         }
     }
 }

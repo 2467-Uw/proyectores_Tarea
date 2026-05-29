@@ -1,0 +1,29 @@
+﻿@model Proyector;
+@{
+    ViewData["Title"] = "Detalles del Proyector";
+
+}
+
+<div class="container">
+    <h2 class="display-5">información del Proyector #@Model.Id</h2>
+    <div>
+        <label>Marca:</label>
+        <span>@Model.Marca</span>
+    </div>
+    <div>
+        <label>Modelo:</label>
+        <span>@Model.Modelo</span>
+    </div>
+    <div>
+        <label>Numero de serie:</label>
+        <span>@Model.NumeroDeSerie</span>
+    </div>
+    <div>
+        <label>Situacion:</label>
+        <span>@Model.Situacion</span>
+    </div>
+    <div>
+        <label>Fecha de alta:</label>
+        <span>@Model.FechaDeAlta.ToShortDateString()</span>
+    </div>
+</div>
