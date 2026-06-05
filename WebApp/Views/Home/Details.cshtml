@@ -5,25 +5,40 @@
 }
 
 <div class="container">
-    <h2 class="display-5">información del Proyector #@Model.Id</h2>
+    <h4 class="mb-3">información del Proyector #@Model.Id</h4>
+
+<div>
     <div>
-        <label>Marca:</label>
-        <span>@Model.Marca</span>
+        <label class="form-label">Marca:</label>
+        <span class="form-label">@Model.Marca</span>
     </div>
     <div>
-        <label>Modelo:</label>
-        <span>@Model.Modelo</span>
+        <label class="form-label">Modelo:</label>
+        <span class="form-label">@Model.Modelo</span>
     </div>
     <div>
-        <label>Numero de serie:</label>
-        <span>@Model.NumeroDeSerie</span>
+        <label class="form-label">Numero de serie:</label>
+        <span class="form-label">@Model.NumeroDeSerie</span>
     </div>
     <div>
-        <label>Situacion:</label>
-        <span>@Model.Situacion</span>
+        <label class="form-label">Situacion:</label>
+        <span class="form-label">@Model.Situacion</span>
     </div>
     <div>
-        <label>Fecha de alta:</label>
-        <span>@Model.FechaDeAlta.ToShortDateString()</span>
+        <label class="form-label">Fecha de alta:</label>
+        <span class="form-label">@Model.FechaDeAlta</span>
+    </div>
+    <div>
+        <label class="form-label">Fecha de baja:</label>
+        <span class="form-label">@Model.FechaDeBaja</span>
+    </div>
+    <div>
+        <label class="form-label">Situacion:</label>
+        <span class="form-label">@Model.Situacion</span>
+    </div>
+</div>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-primary mx-2" asp-controller="Home" asp-action="Index">Cancelar</a>
+     
     </div>
 </div>

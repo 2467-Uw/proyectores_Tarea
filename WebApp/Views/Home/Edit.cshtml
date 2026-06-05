@@ -1,0 +1,56 @@
+﻿@using WebApp.ViewsModels
+@model Proyector;
+@{
+    ViewData["Title"] = "Modificar Proyector";
+}
+
+<div class="container">
+    <h1 class="display-5 mb-3">Información del Proyector número: @Model.Id</h1>
+    <div class="row">
+        <form asp-controller="Home" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="Marca">Marca del Proyecto:</label>
+                <input type="text" class="form-control" asp-for="Marca" id="Marca">
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="Modelo">Modelo:</label>
+                <input type="text" class="form-control" asp-for="Modelo" id="Modelo">
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="NumeroDeSerie">Numero de serie:</label>
+                <input type="text" class="form-control" asp-for="NumeroDeSerie" id="NumeroDeSerie">
+                <span asp-validation-for="NumeroDeSerie" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label"
+                       >Fecha de alta:</label>
+                <input type="date"
+                       class="form-control"
+                       
+                       id="FechaDeAlta">
+
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label" asp-for="Situacion">Situación del Proyecto:</label>
+            </div>
+            <select class="form-select" asp-for="Situacion" id="Situacion">
+                <option value="1">Bueno</option>
+                <option value="2">Regular</option>
+                <option value="3">Malo</option>
+            </select>
+
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

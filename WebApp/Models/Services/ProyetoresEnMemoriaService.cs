@@ -91,5 +91,10 @@
         {
             throw new NotImplementedException();
         }
+
+        public Proyector? Delete(Proyector proyector)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

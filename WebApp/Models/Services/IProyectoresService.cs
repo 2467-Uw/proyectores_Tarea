@@ -8,6 +8,6 @@
         //void DeleteProyector(int Id);
         Proyector? GetProyectorById(int id);
         void Update(Proyector proyector);
-        void Delete(string id);
+        Proyector? Delete(Proyector proyector);
     }
 }

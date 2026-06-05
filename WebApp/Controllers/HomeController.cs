@@ -9,6 +9,8 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private IProyectoresService _service;
+
+        
         public HomeController(IProyectoresService service)
         {
             _service = service;
@@ -52,6 +54,45 @@ namespace WebApp.Controllers
             }
             return RedirectToAction(nameof(Index));
 
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Proyector proyector)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                return View(proyector);
+            }
+            else
+            {
+                _service.Update(proyector);
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        
+        public IActionResult Delete(int id)
+        {
+            var modelo = _service.GetProyectorById(id);
+            if (modelo != null)
+            {
+                return View(modelo);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost, ActionName("Delete")]
+
+        public IActionResult DeleteConfirmed(int id)
+        {
+
+            var proyector = _service.GetProyectorById(id);
+            if (proyector != null)
+            {
+                _service.Delete(proyector);
+            
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

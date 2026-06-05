@@ -1,5 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using WebApp.Data.Migrations;
+using WebApp.Models;
+using WebApp.Models.Services;
 
 #nullable disable
 

@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
-using WebApp.Models.Services;
+  
 
 namespace WebApp.Data.Migrations
 {
     public class AppDBContext : DbContext
     {
         public DbSet<Proyector> Proyectores { get; set; }
+        public DbSet<Departamento> Departamentos { get; set; }
+
 
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
@@ -17,6 +19,7 @@ namespace WebApp.Data.Migrations
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Proyector>().ToTable("Proyectores");
+            modelBuilder.Entity<Departamento>().ToTable("Departamentos");
         }
 
     }

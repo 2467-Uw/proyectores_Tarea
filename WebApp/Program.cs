@@ -9,16 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //Agregar contexto de la base de datos como un servicio
 builder.Services.AddDbContext<AppDBContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion")));
-   
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+builder.Services.AddDbContext<DbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+
 
 builder.Services.AddTransient<IProyectoresService, ProyectoresService>();
 
-
-
 var app = builder.Build();
-
-
 
 
 // Configure the HTTP request pipeline.
@@ -36,6 +34,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
