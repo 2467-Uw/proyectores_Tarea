@@ -18,8 +18,17 @@ namespace WebApp.Data.Migrations
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Proyector>().ToTable("Proyectores");
-            modelBuilder.Entity<Departamento>().ToTable("Departamentos") .HasData(
+            modelBuilder.Entity<Proyector>().ToTable("Proyectores")
+                .HasOne(e => e.Departamento)
+                .WithMany(e => e.Proyectores)
+                .HasForeignKey(e => e.DepartamentoId)
+                .IsRequired();
+            modelBuilder.Entity<Departamento>().ToTable("Departamentos")
+                //.HasMany(e => e.Proyectores)
+                //.WithOne(e => e.Departamento)
+                //.HasForeignKey(e => e.DepartamentoId)
+                //.IsRequired()
+                .HasData(
                 new Departamento
                 { 
                     Id = 1, Titulo = "Departamento de Sistemas y Computación" 

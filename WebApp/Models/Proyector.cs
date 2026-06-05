@@ -20,6 +20,12 @@ namespace WebApp.Models
         public DateTime FechaDeAlta { get; set; } = DateTime.Now;
         [DataType(DataType.Date)]
         public DateTime? FechaDeBaja { get; set; } = null;
+
+        [Required]
+        public int DepartamentoId { get; set; }
+
+        // Propiedad de navegación de la relación con Departamento
+        public Departamento Departamento { get;}
     }
     public enum SituacionProyector
     {
